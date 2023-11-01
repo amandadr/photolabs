@@ -8,6 +8,7 @@ function PhotoFavButton() {
     <div className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
         {/* Insert React */}
+        <FavIcon/>
       </div>
     </div>
   );

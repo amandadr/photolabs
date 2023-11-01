@@ -34,9 +34,14 @@
 
 .photo-list__user-details {
   display: flex;
+  align-items: center;
 }
 
 .photo-list__user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   margin-top: 5px;
   font-weight: 700;
   font-size: 12px;
