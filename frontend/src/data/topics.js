@@ -1,4 +1,4 @@
-const topics = [
+const mockTopics = [
   {
     "id": "1",
     "slug": "topic-1",
@@ -26,4 +26,4 @@ const topics = [
   }
 ];
 
-export default topics;
+export default mockTopics;

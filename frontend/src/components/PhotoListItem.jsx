@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 
 import PhotoFavButton from './PhotoFavButton';
 import "../styles/PhotoListItem.scss";
@@ -17,21 +17,22 @@ import "../styles/PhotoListItem.scss";
 // };
 
 const PhotoListItem = (props) => {
-  const { photo, key } = props;
+  const { key, location, imageSource, username, profile, like, switchLike } = props;
+
 
   return (
-    <section key={key} className="PhotoListItem photo-list__item">
-      <PhotoFavButton/>
-      <img className="photo-list__image" src={`${photo.imageSource}`}/>
-      <section className="photo-list__user-details">
-      <img className="photo-list__user-profile" src={`${photo.profile}`}/>
+    <li key={key} className="PhotoListItem photo-list__item">
+      <PhotoFavButton like={like} switchLike={switchLike}/>
+      <img className="photo-list__image" src={imageSource}/>
+      <div className="photo-list__user-details">
+      <img className="photo-list__user-profile" src={profile}/>
       <div className="photo-list__user-info">
-      <div>{photo.username}</div>
-      <div className="photo-list__user-location">{photo.location.city}, {photo.location.country}</div>
+      <div>{username}</div>
+      <div className="photo-list__user-location">{location.city}, {location.country}</div>
       </div>
-      </section>
-    </section>
+      </div>
+    </li>
   );
-};
+}
 
 export default PhotoListItem;

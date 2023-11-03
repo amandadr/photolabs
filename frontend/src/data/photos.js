@@ -10,8 +10,8 @@ const photo1 = {
   },
   "user": {
     "id": "1",
-    "username": "exampleuser",
-    "name": "Joe Example",
+    "username": "exampleuser2",
+    "name": "Todd Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
 }
@@ -46,8 +46,8 @@ const photo3 = {
   },
   "user": {
     "id": "3",
-    "username": "exampleuser",
-    "name": "Joe Example",
+    "username": "exampleuser2",
+    "name": "Todd Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
 }
@@ -101,8 +101,8 @@ const photo6 =  {
   },
   "user": {
     "id": "6",
-    "username": "exampleuser",
-    "name": "Joe Example",
+    "username": "exampleuser2",
+    "name": "Todd Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
 }
@@ -182,9 +182,10 @@ const photo10 = {
 
 
 
-const photos = [
+const mockPhotos = [
   {
     ...photo1,
+    isLiked: false,
     similar_photos: {
       photo2,
       photo3,
@@ -194,6 +195,7 @@ const photos = [
   },
   {
     ...photo2,
+    isLiked: false,
     similar_photos: {
       photo2,
       photo3,
@@ -203,6 +205,7 @@ const photos = [
   },
   {
     ...photo3,
+    isLiked: false,
     similar_photos: {
       photo2,
       photo3,
@@ -212,6 +215,7 @@ const photos = [
   },
   {
     ...photo4,
+    isLiked: false,
     similar_photos: {
       photo2,
       photo3,
@@ -221,6 +225,7 @@ const photos = [
   },
   {
     ...photo5,
+    isLiked: false,
     similar_photos: {
       photo2,
       photo3,
@@ -230,6 +235,7 @@ const photos = [
   },
   {
     ...photo6,
+    isLiked: false,
     similar_photos: {
       photo2,
       photo3,
@@ -239,6 +245,7 @@ const photos = [
   },
   {
     ...photo7,
+    isLiked: false,
     similar_photos: {
       photo2,
       photo3,
@@ -248,6 +255,7 @@ const photos = [
   },
   {
     ...photo8,
+    isLiked: false,
     similar_photos: {
       photo2,
       photo3,
@@ -257,6 +265,7 @@ const photos = [
   },
   {
     ...photo9,
+    isLiked: false,
     similar_photos: {
       photo2,
       photo3,
@@ -266,6 +275,7 @@ const photos = [
   },
   {
     ...photo10,
+    isLiked: false,
     similar_photos: {
       photo2,
       photo3,
@@ -275,4 +285,4 @@ const photos = [
   }
 ]
 
-export default photos;
+export default mockPhotos;

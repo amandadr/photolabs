@@ -59,24 +59,23 @@ import PhotoListItem from "./PhotoListItem";
 
 
 const PhotoList = (props) => {
-  const { photos } = props;
+  const { photos, like, switchLike } = props;
 
-  const parsedPhotos = photos.map((photo) => {
-    <PhotoListItem
+  const parsedPhotos =
+    Array.isArray(photos) &&
+    photos.map((photo) => (
+      <PhotoListItem
       key={photo.id}
       {...photo}
       location={photo.location}
       imageSource={photo.urls.regular}
       username={photo.user.username}
       profile={photo.user.profile}
-    />
-  });
+      like={like}
+      switchLike={switchLike}/>
+    ));
 
-  return (
-    <ul className="PhotoList photo-list">
-      {parsedPhotos}
-    </ul>
-  );
-};
+  return (<ul className="PhotoList photo-list">{parsedPhotos}</ul>);
+}
 
 export default PhotoList;
