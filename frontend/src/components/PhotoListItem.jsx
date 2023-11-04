@@ -17,12 +17,12 @@ import "../styles/PhotoListItem.scss";
 // };
 
 const PhotoListItem = (props) => {
-  const { key, location, imageSource, username, profile, like, switchLike } = props;
+  const { key, location, imageSource, username, profile } = props;
 
 
   return (
     <li key={key} className="PhotoListItem photo-list__item">
-      <PhotoFavButton like={like} switchLike={switchLike}/>
+      <PhotoFavButton/>
       <img className="photo-list__image" src={imageSource}/>
       <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={profile}/>

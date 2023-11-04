@@ -59,7 +59,7 @@ import PhotoListItem from "./PhotoListItem";
 
 
 const PhotoList = (props) => {
-  const { photos, like, switchLike } = props;
+  const { photos } = props;
 
   const parsedPhotos =
     Array.isArray(photos) &&
@@ -71,8 +71,7 @@ const PhotoList = (props) => {
       imageSource={photo.urls.regular}
       username={photo.user.username}
       profile={photo.user.profile}
-      like={like}
-      switchLike={switchLike}/>
+    />
     ));
 
   return (<ul className="PhotoList photo-list">{parsedPhotos}</ul>);
