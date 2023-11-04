@@ -1,12 +1,10 @@
-// export const findPhoto = (photos, photoId) => {
-//   const photo = { ...photos[photoId] };
-//   return photo;
-// };
+export const findPhoto = (photos, photoId) => {
+  const photo = { ...photos[photoId] };
+  return photo;
+};
 
-// export const toggleLike = (photos, photoId) => {
-//   const photo = findPhoto(photos, photoId);
+export const toggleLike = (photo) => {
+  const toggle = () => {photo.isLiked === false ? true : false};
 
-//   const toggle = () => {photo.isLiked === true ? false : true};
-
-//   return { toggle };
-// };
+  return { toggle };
+};

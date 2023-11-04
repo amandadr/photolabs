@@ -59,18 +59,22 @@ import PhotoListItem from "./PhotoListItem";
 
 
 const PhotoList = (props) => {
-  const { photos } = props;
+  const { photos, favList, setFavList } = props;
 
   const parsedPhotos =
     Array.isArray(photos) &&
     photos.map((photo) => (
       <PhotoListItem
       key={photo.id}
+      photoId={photo.id}
+      photoList={photos}
       {...photo}
       location={photo.location}
       imageSource={photo.urls.regular}
       username={photo.user.username}
       profile={photo.user.profile}
+      favList={favList} 
+      setFavList={setFavList}
     />
     ));
 

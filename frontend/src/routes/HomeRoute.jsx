@@ -10,13 +10,12 @@ import topics from 'data/topics';
 
 
 const HomeRoute = () => {
-  // const [liked, setPhoto] = useState(false);
-  // const switchLike = () => setPhoto(liked === true ? false : true);
+  const [favList, setFavList] = useState({});
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics}/>
-      <PhotoList photos={photos}/>
+      <TopNavigation topics={topics} favList={favList} setFavList={setFavList}/>
+      <PhotoList photos={photos} favList={favList} setFavList={setFavList}/>
     </div>
   );
 };
