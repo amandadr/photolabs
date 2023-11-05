@@ -3,9 +3,10 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import PhotoList from 'components/PhotoList';
 import closeSymbol from '../assets/closeSymbol.svg';
+import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const { show, setShow, viewPhoto } = props;
+  const { favList, setFavList, show, setShow, viewPhoto, photoList } = props;
   const handleClose = () => setShow(false);
 
   const photo = viewPhoto[0];
@@ -17,7 +18,10 @@ const PhotoDetailsModal = (props) => {
       </button>
 
       <section className="photo-details-modal__header">
+        <section className="photo-details-modal__image-container">
+        <PhotoFavButton favList={favList} setFavList={setFavList} photoId={photo.id} photoList={photoList}/>
         <img src={photo.urls.full} className="photo-details-modal__image"></img>
+        </section>
         <section className="photo-details-modal__photographer-details">
           <img src={photo.user.profile} className="photo-details-modal__photographer-profile"></img>
           <section className="photo-details-modal__photographer-info">

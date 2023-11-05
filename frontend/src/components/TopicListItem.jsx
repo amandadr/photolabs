@@ -12,7 +12,7 @@ const TopicListItem = (props) => {
   const { slug, title } = props;
 
   return (
-    <div className="TopicListItem topic-list__item">
+    <div className="topic-list__item">
       {title}
     </div>
   );

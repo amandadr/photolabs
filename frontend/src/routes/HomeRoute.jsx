@@ -4,14 +4,9 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-// DATA
-import photos from 'data/photos';
-import topics from 'data/topics';
-
 
 const HomeRoute = (props) => {
-  const { show, setShow, handleShow, viewPhoto, setPhoto } = props;
-  const [favList, setFavList] = useState({});
+  const { photos, topics, handleShow, setPhoto, favList, setFavList } = props;
 
   return (
     <div className="home-route">
@@ -20,10 +15,7 @@ const HomeRoute = (props) => {
       photos={photos}
       favList={favList}
       setFavList={setFavList}
-      show={show}
-      setShow={setShow}
       handleShow={handleShow}
-      viewPhoto={viewPhoto}
       setPhoto={setPhoto}/>
     </div>
   );

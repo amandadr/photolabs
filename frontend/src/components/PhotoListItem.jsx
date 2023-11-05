@@ -18,7 +18,7 @@ import { findPhoto } from "helpers/photoHelpers";
 // };
 
 const PhotoListItem = (props) => {
-  const { key, photoId, photoList, thisPhoto, location, imageSource, username, profile, favList, setFavList, show, setShow, handleShow, viewPhoto, setPhoto } = props;
+  const { key, photoId, photoList, thisPhoto, location, imageSource, username, profile, favList, setFavList, handleShow, setPhoto } = props;
   
   const handlePhoto = () => setPhoto([thisPhoto]);
 

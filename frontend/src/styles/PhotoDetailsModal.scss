@@ -2,12 +2,14 @@
   background-color: white;
   box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
   position: absolute;
+  margin-top: 13rem;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -40%);
-  height: 90%;
   width: 65%;
-  overflow-y: scroll;
+  overflow: visible;
+  overflow-y: hidden;
+  border: 1px #E6E6E6;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -36,9 +38,23 @@
   margin-top: 8px;
 }
 
+.photo-details-modal__image-container {
+  width: 90%;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .photo-details-modal__image {
-  max-width: 65%;
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  max-height: 30rem;
+  margin-top: -.25rem;
+  margin-left: -2rem;
 }
 
 .photo-details-modal__top-bar {
