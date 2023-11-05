@@ -186,102 +186,102 @@ const mockPhotos = [
   {
     ...photo1,
     isLiked: false,
-    similar_photos: {
+    similarPhotos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo2,
     isLiked: false,
-    similar_photos: {
+    similarPhotos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo3,
     isLiked: false,
-    similar_photos: {
+    similarPhotos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo4,
     isLiked: false,
-    similar_photos: {
+    similarPhotos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo5,
     isLiked: false,
-    similar_photos: {
+    similarPhotos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo6,
     isLiked: false,
-    similar_photos: {
+    similarPhotos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo7,
     isLiked: false,
-    similar_photos: {
+    similarPhotos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo8,
     isLiked: false,
-    similar_photos: {
+    similarPhotos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo9,
     isLiked: false,
-    similar_photos: {
+    similarPhotos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo10,
     isLiked: false,
-    similar_photos: {
+    similarPhotos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   }
 ]
 

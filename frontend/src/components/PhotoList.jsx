@@ -59,7 +59,7 @@ import PhotoListItem from "./PhotoListItem";
 
 
 const PhotoList = (props) => {
-  const { photos, favList, setFavList } = props;
+  const { photos, favList, setFavList, show, setShow, handleShow, viewPhoto, setPhoto } = props;
 
   const parsedPhotos =
     Array.isArray(photos) &&
@@ -68,6 +68,7 @@ const PhotoList = (props) => {
       key={photo.id}
       photoId={photo.id}
       photoList={photos}
+      thisPhoto={photo}
       {...photo}
       location={photo.location}
       imageSource={photo.urls.regular}
@@ -75,6 +76,11 @@ const PhotoList = (props) => {
       profile={photo.user.profile}
       favList={favList} 
       setFavList={setFavList}
+      show={show}
+      setShow={setShow}
+      handleShow={handleShow}
+      viewPhoto={viewPhoto}
+      setPhoto={setPhoto}
     />
     ));
 
