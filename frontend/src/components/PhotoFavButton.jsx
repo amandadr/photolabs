@@ -5,12 +5,12 @@ import '../styles/PhotoFavButton.scss';
 import { findPhoto } from 'helpers/photoHelpers';
 
 function PhotoFavButton(props) {
-  const { photoId, photoList, favList, setFavList } = props;
-  const thisPhoto = findPhoto(photoList, photoId);
+  const { photoId, useApplicationData } = props;
+  const thisPhoto = findPhoto(useApplicationData.photos, photoId);
 
-  const addFav = (key) => { setFavList({ ...favList, [key]: thisPhoto })};
+  const addFav = (key) => { useApplicationData.updateToFavPhotoIds.setFavList({ ...favList, [key]: thisPhoto })};
 
-  const deleteFav = (key) => { setFavList({ ...favList, [key]: undefined })};
+  const deleteFav = (key) => { useApplicationData.updateToFavPhotoIds.setFavList({ ...favList, [key]: undefined })};
 
 
   const [liked, setLike] = useState(false);

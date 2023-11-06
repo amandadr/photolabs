@@ -6,10 +6,10 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const { favList, setFavList, show, setShow, viewPhoto, photoList } = props;
+  const { useApplicationData } = props;
   const handleClose = () => setShow(false);
 
-  const photo = viewPhoto[0];
+  const photo = useApplicationData.onPhotoSelect.viewPhoto[0];
 
   return show &&
     <div className="photo-details-modal">
@@ -19,7 +19,7 @@ const PhotoDetailsModal = (props) => {
 
       <section className="photo-details-modal__header">
         <section className="photo-details-modal__image-container">
-        <PhotoFavButton favList={favList} setFavList={setFavList} photoId={photo.id} photoList={photoList}/>
+        <PhotoFavButton useApplicationData={useApplicationData} photoId={photo.id}/>
         <img src={photo.urls.full} className="photo-details-modal__image"></img>
         </section>
         <section className="photo-details-modal__photographer-details">
@@ -33,7 +33,7 @@ const PhotoDetailsModal = (props) => {
 
       <section className="photo-list photo-details-modal__images">
         Similar Photos
-        <PhotoList className="photo-list" photos={viewPhoto[0].similarPhotos} />
+        <PhotoList className="photo-list" photos={useApplicationData.onPhotoSelect.viewPhoto[0].similarPhotos} />
       </section>
     </div>
 

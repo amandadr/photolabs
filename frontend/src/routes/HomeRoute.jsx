@@ -6,17 +6,12 @@ import PhotoList from 'components/PhotoList';
 
 
 const HomeRoute = (props) => {
-  const { photos, topics, handleShow, setPhoto, favList, setFavList } = props;
+  const { useApplicationData } = props;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} favList={favList} setFavList={setFavList} />
-      <PhotoList 
-      photos={photos}
-      favList={favList}
-      setFavList={setFavList}
-      handleShow={handleShow}
-      setPhoto={setPhoto}/>
+      <TopNavigation useApplicationData={useApplicationData} />
+      <PhotoList useApplicationData={useApplicationData}/>
     </div>
   );
 };
