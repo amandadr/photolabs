@@ -5,7 +5,7 @@ import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
 const TopNavigation = (props) => {
-  const { topics, favList, setFavList } = props;
+  const { topics, favList, setPhotoList } = props;
 
   const favOnPage = () => {
     for (const key in favList) {
@@ -18,7 +18,7 @@ const TopNavigation = (props) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={topics}/>
+      <TopicList topics={topics} setPhotoList={setPhotoList}/>
       <FavBadge favOnPage={favOnPage}/>
     </div>
   )

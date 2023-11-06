@@ -22,12 +22,12 @@ import "../styles/TopicList.scss";
 // ];
 
 const TopicList = (props) => {
-  const { topics } = props;
+  const { topics, setPhotoList } = props;
 
   const parsedTopics =
     Array.isArray(topics) &&
     topics.map((topic) => (
-      <TopicListItem key={topic.id} {...topic} slug={topic.slug} title={topic.title}/>
+      <TopicListItem key={topic.id} topicId={topic.id} {...topic} slug={topic.slug} title={topic.title} setPhotoList={setPhotoList}/>
     ));
 
   return (
