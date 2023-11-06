@@ -38,7 +38,7 @@ const App = () => {
       {/* <TopNavigation topics={sampleDataForTopicList}/>
       <PhotoList photos={sampleDataForPhotoList} like={like} switchLike={switchLike}/> */}
       <HomeRoute photos={thisPhotoList} topics={thisTopicList} favList={favList} setFavList={setFavList} handleShow={handleShow} setPhoto={setPhoto} setPhotoList={setPhotoList}/>
-      <PhotoDetailsModal favList={favList} setFavList={setFavList} show={show} setShow={setShow} handleShow={handleShow} viewPhoto={viewPhoto} />
+      <PhotoDetailsModal favList={favList} setFavList={setFavList} show={show} setShow={setShow} handleShow={handleShow} viewPhoto={viewPhoto} photoList={thisPhotoList}/>
     </div>
   );
 };

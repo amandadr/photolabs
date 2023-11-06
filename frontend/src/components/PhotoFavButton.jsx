@@ -6,15 +6,14 @@ import { findPhoto } from 'helpers/photoHelpers';
 
 function PhotoFavButton(props) {
   const { photoId, photoList, favList, setFavList } = props;
-  const thisPhoto = findPhoto(photoList, photoId);
-
-  const addFav = (key) => { setFavList({ ...favList, [key]: thisPhoto })};
-
-  const deleteFav = (key) => { setFavList({ ...favList, [key]: undefined })};
-
-
+  
+  
   const [liked, setLike] = useState(false);
   const switchLike = () => {
+    const thisPhoto = findPhoto(photoList, photoId);
+    const addFav = (key) => { setFavList({ ...favList, [key]: thisPhoto })};
+    const deleteFav = (key) => { setFavList({ ...favList, [key]: undefined })};
+    
     setLike(liked === false ? true : false);
     if (liked === true) {
       deleteFav(thisPhoto.id);
