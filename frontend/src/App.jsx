@@ -11,7 +11,7 @@ import mockTopics from 'data/topics';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   
-  const [favList, setFavList] = useState({});
+  const [favList, setFavList] = useState([]);
   const [ viewPhoto, setPhoto ] = useState(mockPhotos[0]);
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);

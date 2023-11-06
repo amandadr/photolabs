@@ -8,20 +8,21 @@ function PhotoFavButton(props) {
   const { photoId, photoList, favList, setFavList } = props;
   const thisPhoto = findPhoto(photoList, photoId);
 
-  const addFav = (photoId) => { setFavList([ ...favList, thisPhoto ])};
+  const addFav = (photoId) => { setFavList([ ...favList, thisPhoto[0] ]); console.log(favList)};
 
   const deleteFav = (photoId) => {
-    const updatedFavs = favList.filter((photo) => photo.id !== id);
-    setFavList(() => [...updatedMovies]);
-
+    const updatedFavs = favList.filter((photo) => photo.id !== photoId);
+    setFavList(() => [...updatedFavs]);
+    console.log(updatedFavs)
+  }
 
   const [liked, setLike] = useState(false);
   const switchLike = () => {
     setLike(liked === false ? true : false);
     if (liked === true) {
-      deleteFav(thisPhoto.id);
+      deleteFav(thisPhoto[0].id);
     } else if (liked === false) {
-      addFav(thisPhoto.id);
+      addFav(thisPhoto[0].id);
     }
   };
 
