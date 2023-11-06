@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import axios from "axios";
 
 import "../styles/TopicListItem.scss";
 
@@ -12,14 +13,13 @@ const TopicListItem = (props) => {
   const { topicId, slug, title, setPhotoList } = props;
 
   const fetchPhotos = async () => {
-    let res = await (
-      await fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
-    ).json();
-    setPhotoList(res);
+    axios.get(`http://localhost:8001/api/topics/photos/${topicId}`)
+    .then((res) => {
+      console.log(res.data);
+      setPhotoList(res.data);
+    })
   }
   
-
-
   return (
     <div className="topic-list__item" onClick={useCallback(() => {
     fetchPhotos();
