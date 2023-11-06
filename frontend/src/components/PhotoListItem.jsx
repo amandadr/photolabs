@@ -18,12 +18,12 @@ import { findPhoto } from "helpers/photoHelpers";
 // };
 
 const PhotoListItem = (props) => {
-  const { key, photoId, photoList, thisPhoto, location, imageSource, username, profile, favList, setFavList, handleShow, setPhoto } = props;
+  const { photoId, photoList, thisPhoto, location, imageSource, username, profile, favList, setFavList, handleShow, setPhoto } = props;
   
   const handlePhoto = () => setPhoto([thisPhoto]);
 
   return (
-    <li key={key} className="photo-list__item">
+    <li key={photoId} className="photo-list__item">
       <PhotoFavButton photoId={photoId} photoList={photoList} favList={favList} setFavList={setFavList}/>
       <section className="photo-list__click-container" onClick={() => { handleShow(); handlePhoto();}}>
       <img className="photo-list__image" src={imageSource}/>
