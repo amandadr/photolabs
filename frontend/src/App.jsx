@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
 
-
-// Note: Rendering a single component to build components in isolation
 const App = () => {
+  const {
+    state,
+    favPhotoAdd,
+    favPhotoDelete,
+    selectPhoto,
+    displayPhoto
+  } = useApplicationData();
+
+
+  // const favourites = state.favList.includes(action.id) 
+  // ? state.favList.filter((item) => item !== action.id) 
+  // : [...state.favList, action.id];
+
   const [thisPhotoList, setPhotoList] = useState([]);
   const [thisTopicList, setTopicList] = useState([]);
 
@@ -27,18 +38,14 @@ const App = () => {
     })
   }, [])
 
-  const [favList, setFavList] = useState({});
-  const [viewPhoto, setPhoto] = useState({});
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
-
   return (
     <div className="App">
       {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem photo={sampleDataForPhotoListItem} key={index} like={like} switchLike={switchLike}/>) } */}
       {/* <TopNavigation topics={sampleDataForTopicList}/>
       <PhotoList photos={sampleDataForPhotoList} like={like} switchLike={switchLike}/> */}
-      <HomeRoute photos={thisPhotoList} topics={thisTopicList} favList={favList} setFavList={setFavList} handleShow={handleShow} setPhoto={setPhoto} setPhotoList={setPhotoList}/>
-      <PhotoDetailsModal favList={favList} setFavList={setFavList} show={show} setShow={setShow} handleShow={handleShow} viewPhoto={viewPhoto} photoList={thisPhotoList}/>
+      <HomeRoute photos={thisPhotoList} topics={thisTopicList} favList={state.favList} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} selectPhoto={selectPhoto} displayPhoto={displayPhoto}/>
+
+<PhotoDetailsModal photo={state.photo} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} displayPhoto={displayPhoto} show={state.show}/>
     </div>
   );
 };

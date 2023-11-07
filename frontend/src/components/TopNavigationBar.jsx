@@ -6,14 +6,14 @@ import FavBadge from './FavBadge';
 import { fetchPhotos } from 'helpers/photoHelpers';
 
 const TopNavigation = (props) => {
-  const { topics, favList, setPhotoList } = props;
+  const { topics, favList } = props;
 
   const favOnPage = () => {
-    for (const key in favList) {
-      if (favList[key] !== undefined)
-        return true;
+    if (favList) {
+      return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
   const url = "http://localhost:8001/api/photos";
@@ -22,7 +22,7 @@ const TopNavigation = (props) => {
       <span className="top-nav-bar__logo" onClick={useCallback(() => {
     fetchPhotos(url, setPhotoList);
   }, [])}>PhotoLabs</span>
-      <TopicList topics={topics} setPhotoList={setPhotoList}/>
+      <TopicList topics={topics}/>
       <FavBadge favOnPage={favOnPage}/>
     </div>
   )
