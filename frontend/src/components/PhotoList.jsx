@@ -66,6 +66,7 @@ const PhotoList = (props) => {
     photos.map((photo) => (
       <PhotoListItem
       photoList={photos}
+      photo={photo}
       key={photo.id}
       {...photo}
       photoId={photo.id}

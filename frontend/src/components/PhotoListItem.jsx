@@ -17,12 +17,17 @@ import "../styles/PhotoListItem.scss";
 // };
 
 const PhotoListItem = (props) => {
-  const { photoList, photoId, location, imageSource, username, profile, favPhotoAdd, favPhotoDelete, selectPhoto, displayPhoto } = props;
+  const { photoId, photo, location, imageSource, username, profile, favPhotoAdd, favPhotoDelete, selectPhoto, displayPhoto } = props;
+
+  const handleDisplay = () => {
+    selectPhoto(photo);
+    displayPhoto(true);
+  }
 
   return (
     <li key={photoId} className="photo-list__item">
       <PhotoFavButton photoId={photoId} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete}/>
-      <section className="photo-list__click-container" onClick={() => { displayPhoto(true); selectPhoto(thisPhoto);}}>
+      <section className="photo-list__click-container" onClick={() => { handleDisplay();}}>
       <img className="photo-list__image" src={imageSource}/>
       <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={profile}/>

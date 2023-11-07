@@ -4,7 +4,7 @@ import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
-import useApplication from 'hooks/useApplicationData';
+import useApplicationData from 'hooks/useApplicationData';
 // DATA
 import mockPhotos from 'data/photos';
 import mockTopics from 'data/topics';
@@ -15,16 +15,11 @@ const App = () => {
     state,
     favPhotoAdd,
     favPhotoDelete,
-    setPhotos,
-    setTopics,
     selectPhoto,
     displayPhoto
-  } = useApplication();
+  } = useApplicationData();
 
-  () => {
-    setPhotos(mockPhotos);
-    setTopics(mockTopics);
-  }
+  console.log(state)
 
   return (
     <div className="App">
@@ -32,7 +27,7 @@ const App = () => {
       {/* <TopNavigation topics={sampleDataForTopicList}/>
       <PhotoList photos={sampleDataForPhotoList} like={like} switchLike={switchLike}/> */}
       
-      <HomeRoute photos={state.photo} topics={state.topics} favList={state.favList} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} selectPhoto={selectPhoto} displayPhoto={displayPhoto} />
+      <HomeRoute photos={mockPhotos} topics={mockTopics} favList={state.favList} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} selectPhoto={selectPhoto} displayPhoto={displayPhoto} />
 
       <PhotoDetailsModal photo={state.photo} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} displayPhoto={displayPhoto} />
     </div>
