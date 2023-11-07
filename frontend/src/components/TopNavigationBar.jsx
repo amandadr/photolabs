@@ -10,7 +10,7 @@ const TopNavigation = (props) => {
 
   const favOnPage = () => {
     console.log(favList)
-    if (favList[0] === Number()) {
+    if (favList[0]) {
       return true;
     } else {
       return false;
