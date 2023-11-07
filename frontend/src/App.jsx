@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
@@ -29,13 +30,12 @@ const App = () => {
     const promises = [photoPromise, topicPromise];
 
     Promise.all(promises)
-    .then((arrayOfResponses) => {
-      console.log(arrayOfResponses);
-      const photos = arrayOfResponses[0].data;
-      const topics = arrayOfResponses[1].data;
-      setPhotoList(photos);
-      setTopicList(topics);
-    })
+      .then((arrayOfResponses) => {
+        const photos = arrayOfResponses[0].data;
+        const topics = arrayOfResponses[1].data;
+        setPhotoList(photos);
+        setTopicList(topics);
+      })
   }, [])
 
   return (
@@ -43,9 +43,9 @@ const App = () => {
       {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem photo={sampleDataForPhotoListItem} key={index} like={like} switchLike={switchLike}/>) } */}
       {/* <TopNavigation topics={sampleDataForTopicList}/>
       <PhotoList photos={sampleDataForPhotoList} like={like} switchLike={switchLike}/> */}
-      <HomeRoute photos={thisPhotoList} topics={thisTopicList} favList={state.favList} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} selectPhoto={selectPhoto} displayPhoto={displayPhoto}/>
+      <HomeRoute photos={thisPhotoList} topics={thisTopicList} favList={state.favList} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} selectPhoto={selectPhoto} displayPhoto={displayPhoto} />
 
-<PhotoDetailsModal photo={state.photo} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} displayPhoto={displayPhoto} show={state.show}/>
+      <PhotoDetailsModal photo={state.photo} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} displayPhoto={displayPhoto} show={state.show} />
     </div>
   );
 };

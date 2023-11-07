@@ -7,6 +7,7 @@ export const SET_TOPIC_DATA = 'setTopics';
 export const SELECT_PHOTO = 'selectPhoto';
 export const DISPLAY_PHOTO_DETAILS = 'displayPhoto';
 
+const deleteFav = () => { return state.favList.filter((photo) => photo.id !== action.photoId)}
 
 const reducer = (state, action) => {
 
@@ -15,7 +16,7 @@ const reducer = (state, action) => {
       return { ...state, favList: [...state.favList, action.photoId] };
 
     case FAV_PHOTO_REMOVED:
-      return { ...state, favList: [() => {state.favList.filter((photo) => photo !== action.photoId)}] };
+      return { ...state, favList: [deleteFav] };
 
     case SELECT_PHOTO:
       return { ...state, photo: action.photo };

@@ -9,7 +9,8 @@ const TopNavigation = (props) => {
   const { topics, favList } = props;
 
   const favOnPage = () => {
-    if (favList) {
+    console.log(favList)
+    if (favList[0] === Number()) {
       return true;
     } else {
       return false;
