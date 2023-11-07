@@ -15,13 +15,13 @@ const reducer = (state, action) => {
       return { ...state, favList: [...state.favList, action.photoId] };
 
     case FAV_PHOTO_REMOVED:
-      return { favList: [() => {state.favList.filter((photo) => photo !== action.photoId)}] };
+      return { ...state, favList: [() => {state.favList.filter((photo) => photo !== action.photoId)}] };
 
     case SELECT_PHOTO:
-      return { ...state, viewPhoto: action.photo };
+      return { ...state, photo: action.photo };
 
     case DISPLAY_PHOTO_DETAILS:
-      return { ...state, setShow: action.show };
+      return { ...state, show: action.show };
 
     default:
       throw new Error(

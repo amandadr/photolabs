@@ -6,9 +6,9 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const { photo, favPhotoAdd, favPhotoDelete, displayPhoto } = props;
+  const { photo, favPhotoAdd, favPhotoDelete, displayPhoto, show } = props;
 
-  return (
+  return show && (
     <div className="photo-details-modal">
       <button onClick={() => {displayPhoto(false);}} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
