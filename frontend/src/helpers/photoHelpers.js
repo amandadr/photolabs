@@ -1,3 +1,4 @@
 export const findPhoto = (photos, photoId) => {
-  return photos.filter(photo => photo.id === photoId)
+  const photo = photos.filter(photo => photo.id === photoId)
+  return photo[0];
 };

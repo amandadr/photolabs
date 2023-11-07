@@ -1,36 +1,35 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 import { findPhoto } from 'helpers/photoHelpers';
 
 function PhotoFavButton(props) {
-  const { photoId, photoList, favList, setFavList } = props;
+  const { photoId, photoList, favList, setFavList, selected} = props;
   const thisPhoto = findPhoto(photoList, photoId);
 
-  const addFav = (photoId) => { setFavList([ ...favList, thisPhoto[0] ]); console.log(favList)};
+  const addFav = () => { setFavList([...favList, thisPhoto.id]);};
 
   const deleteFav = (photoId) => {
-    const updatedFavs = favList.filter((photo) => photo.id !== photoId);
+    const updatedFavs = favList.filter((photo) => photo !== photoId);
     setFavList(() => [...updatedFavs]);
-    console.log(updatedFavs)
   }
 
   const [liked, setLike] = useState(false);
   const switchLike = () => {
     setLike(liked === false ? true : false);
     if (liked === true) {
-      deleteFav(thisPhoto[0].id);
+      deleteFav(thisPhoto.id);
     } else if (liked === false) {
-      addFav(thisPhoto[0].id);
+      addFav(thisPhoto.id);
     }
   };
+  console.log("favList", favList, "thisPhoto", thisPhoto)
 
   return (
     <div onClick={switchLike} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-        {liked === true && <FavIcon className={"true"} selected={true}/>}
-        {liked === false && <FavIcon className={"false"} selected={false}/>}
+        <FavIcon className={"true"} selected={selected ?? liked === true} />
       </div>
     </div>
   );

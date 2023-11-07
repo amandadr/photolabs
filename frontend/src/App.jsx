@@ -14,7 +14,7 @@ const App = () => {
   const [favList, setFavList] = useState([]);
   const [ viewPhoto, setPhoto ] = useState(mockPhotos[0]);
   const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => setTimeout(() => {setShow(true)}, 300);
 
   return (
     <div className="App">
@@ -22,7 +22,7 @@ const App = () => {
       {/* <TopNavigation topics={sampleDataForTopicList}/>
       <PhotoList photos={sampleDataForPhotoList} like={like} switchLike={switchLike}/> */}
       <HomeRoute photos={mockPhotos} topics={mockTopics} favList={favList} setFavList={setFavList} handleShow={handleShow} setPhoto={setPhoto}/>
-      <PhotoDetailsModal favList={favList} setFavList={setFavList} show={show} setShow={setShow} handleShow={handleShow} viewPhoto={viewPhoto} photoList={mockPhotos}/>
+      <PhotoDetailsModal favList={favList} setFavList={setFavList} show={show} setShow={setShow} handleShow={handleShow} photo={viewPhoto} photoList={mockPhotos}/>
     </div>
   );
 };
