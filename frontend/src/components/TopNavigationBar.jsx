@@ -5,21 +5,21 @@ import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
 const TopNavigation = (props) => {
-  const { topics, favList, setFavList } = props;
+  const { topics, favList } = props;
 
   const favOnPage = () => {
-    for (const key in favList) {
-      if (favList[key] !== undefined)
-        return true;
+    if (favList) {
+      return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={topics}/>
-      <FavBadge favOnPage={favOnPage}/>
+      <TopicList topics={topics} />
+      <FavBadge favOnPage={favOnPage} />
     </div>
   )
 }

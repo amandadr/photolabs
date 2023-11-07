@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 import PhotoFavButton from './PhotoFavButton';
 import "../styles/PhotoListItem.scss";
-import { findPhoto } from "helpers/photoHelpers";
 
 
 
@@ -18,14 +17,12 @@ import { findPhoto } from "helpers/photoHelpers";
 // };
 
 const PhotoListItem = (props) => {
-  const { photoId, photoList, thisPhoto, location, imageSource, username, profile, favList, setFavList, handleShow, setPhoto } = props;
-  
-  const handlePhoto = () => setPhoto(thisPhoto);
+  const { photoList, photoId, location, imageSource, username, profile, favPhotoAdd, favPhotoDelete, selectPhoto, displayPhoto } = props;
 
   return (
     <li key={photoId} className="photo-list__item">
-      <PhotoFavButton photoId={photoId} photoList={photoList} favList={favList} setFavList={setFavList}/>
-      <section className="photo-list__click-container" onClick={() => { handleShow(); handlePhoto();}}>
+      <PhotoFavButton photoId={photoId} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete}/>
+      <section className="photo-list__click-container" onClick={() => { displayPhoto(true); selectPhoto(thisPhoto);}}>
       <img className="photo-list__image" src={imageSource}/>
       <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={profile}/>
