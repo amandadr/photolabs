@@ -17,10 +17,10 @@ const PhotoDetailsModal = (props) => {
       <section className="photo-details-modal__header">
         <section className="photo-details-modal__image-container">
         <PhotoFavButton photoId={photo.id} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete}/>
-        <img src={photo.urls.full} className="photo-details-modal__image"></img>
+        <img src={photo.urls.full} alt="imagination" className="photo-details-modal__image"/>
         </section>
         <section className="photo-details-modal__photographer-details">
-          <img src={photo.user.profile} className="photo-details-modal__photographer-profile"></img>
+          <img src={photo.user.profile} alt="user"className="photo-details-modal__photographer-profile"/>
           <section className="photo-details-modal__photographer-info">
             <div>{photo.user.username}</div>
             <div className="photo-details-modal__photographer-location">{photo.location.city}, {photo.location.country}</div>

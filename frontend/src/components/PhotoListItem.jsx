@@ -28,9 +28,9 @@ const PhotoListItem = (props) => {
     <li key={photoId} className="photo-list__item">
       <PhotoFavButton photoId={photoId} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete}/>
       <section className="photo-list__click-container" onClick={() => { handleDisplay();}}>
-      <img className="photo-list__image" src={imageSource}/>
+      <img className="photo-list__image" src={imageSource} alt="imagination"/>
       <div className="photo-list__user-details">
-      <img className="photo-list__user-profile" src={profile}/>
+      <img className="photo-list__user-profile" src={profile} alt="user"/>
       <div className="photo-list__user-info">
       <div>{username}</div>
       <div className="photo-list__user-location">{location.city}, {location.country}</div>
