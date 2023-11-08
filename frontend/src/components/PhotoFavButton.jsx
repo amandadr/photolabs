@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
+import useWow from 'hooks/useWow';
 import { findPhoto } from 'helpers/photoHelpers';
 
 function PhotoFavButton(props) {
@@ -15,8 +16,11 @@ function PhotoFavButton(props) {
       favPhotoDelete(photoId);
     } else if (liked === false) {
       favPhotoAdd(photoId);
+      sayWow();
     }
   };
+
+  const { sayWow } = useWow();
 
 
   return (
