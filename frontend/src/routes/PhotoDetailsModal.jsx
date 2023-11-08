@@ -6,7 +6,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const { photo, favPhotoAdd, favPhotoDelete, displayPhoto, show } = props;
+  const { photo, favList, favPhotoAdd, favPhotoDelete, selectPhoto, displayPhoto, show } = props;
 
   return show && (
     <div className="photo-details-modal">
@@ -16,7 +16,7 @@ const PhotoDetailsModal = (props) => {
 
       <section className="photo-details-modal__header">
         <section className="photo-details-modal__image-container">
-        <PhotoFavButton photoId={photo.id} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete}/>
+        <PhotoFavButton photoId={photo.id} favList={favList} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete}/>
         <img src={photo.urls.full} alt="imagination" className="photo-details-modal__image"/>
         </section>
         <section className="photo-details-modal__photographer-details">
@@ -31,7 +31,7 @@ const PhotoDetailsModal = (props) => {
       <section className="photo-details-modal__images">
         <div className="photo-details-modal__similar-photos">Similar Photos
         </div>
-        <PhotoList className="photo-list" photos={photo.similar_photos}/>
+        <PhotoList className="photo-list" photos={photo.similar_photos} favList={favList} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} selectPhoto={selectPhoto} displayPhoto={displayPhoto}/>
       </section>
     </div>
     );

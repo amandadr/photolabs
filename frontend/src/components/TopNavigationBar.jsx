@@ -6,10 +6,9 @@ import FavBadge from './FavBadge';
 import { fetchPhotos } from 'helpers/photoHelpers';
 
 const TopNavigation = (props) => {
-  const { topics, favList } = props;
+  const { topics, setPhotoList, favList } = props;
 
   const favOnPage = () => {
-    console.log(favList)
     if (favList[0]) {
       return true;
     } else {
@@ -23,7 +22,7 @@ const TopNavigation = (props) => {
       <span className="top-nav-bar__logo" onClick={useCallback(() => {
     fetchPhotos(url, setPhotoList);
   }, [])}>PhotoLabs</span>
-      <TopicList topics={topics}/>
+      <TopicList topics={topics} setPhotoList={setPhotoList}/>
       <FavBadge favOnPage={favOnPage}/>
     </div>
   )

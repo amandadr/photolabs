@@ -47,7 +47,7 @@ const useApplicationData = () => {
   };
 
   const favPhotoDelete = (photoId) => {
-    dispatch({type: FAV_PHOTO_REMOVED, photoId: photoId});
+    setTimeout(() => {dispatch({type: FAV_PHOTO_REMOVED, photoId: photoId})}, 300)
   };
 
   const selectPhoto = (photo) => {

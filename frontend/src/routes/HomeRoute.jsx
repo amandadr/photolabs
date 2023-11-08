@@ -12,7 +12,7 @@ const HomeRoute = (props) => {
     <div className="home-route">
       <TopNavigation topics={topics} favList={favList} setPhotoList={setPhotoList}/>
       <PhotoList 
-      photos={photos} topics={topics} favList={favList} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} selectPhoto={selectPhoto} displayPhoto={displayPhoto}/>
+      photos={photos} favList={favList} favPhotoAdd={favPhotoAdd} favPhotoDelete={favPhotoDelete} selectPhoto={selectPhoto} displayPhoto={displayPhoto}/>
     </div>
   );
 };
