@@ -7,9 +7,6 @@ export const SET_TOPIC_DATA = 'setTopics';
 export const SELECT_PHOTO = 'selectPhoto';
 export const DISPLAY_PHOTO_DETAILS = 'displayPhoto';
 
-const deleteFav = () => {state.favList.filter((photo) => photo !== action.photoId)}
-// console.log(deleteFav)
-
 const reducer = (state, action) => {
 
   switch (action.type) {
@@ -47,7 +44,7 @@ const useApplicationData = () => {
   };
 
   const favPhotoDelete = (photoId) => {
-    setTimeout(() => {dispatch({type: FAV_PHOTO_REMOVED, photoId: photoId})}, 300)
+    dispatch({type: FAV_PHOTO_REMOVED, photoId: photoId})
   };
 
   const selectPhoto = (photo) => {
@@ -55,7 +52,7 @@ const useApplicationData = () => {
   };
 
   const displayPhoto = (show) => {
-    dispatch({type: DISPLAY_PHOTO_DETAILS, show: show});
+    setTimeout(() => {dispatch({type: DISPLAY_PHOTO_DETAILS, show: show})}, 300)
   };
 
   return {
