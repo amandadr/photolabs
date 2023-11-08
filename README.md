@@ -7,7 +7,7 @@ Install dependencies with `npm install` in each respective `/frontend` and `/bac
 
 ## Features + Screenshots
 ### Landing: Grid view of photos
-<img src="https://github.com/amandadr/photolabs/blob/main/docs/landing.gif?raw=true" width="1100" height="auto"/>
+<img src="https://github.com/amandadr/photolabs/blob/main/docs/landing.gif?raw=true" width="800" height="auto"/>
 
 ### Topics: View by topic, or by all
 ![Topics](https://github.com/amandadr/photolabs/blob/main/docs/topics.gif?raw=true | width=600)
