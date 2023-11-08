@@ -1,24 +1,33 @@
-# react-photolabs
-The PhotoLabs project for the Web Development React course programming.
-
-# Photolabs
+# PhotoLabs
+A single-page React web-app which allows the user to view and favourite photos.
 
 ## Setup
 
 Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
 
-## [Frontend] Running Webpack Development Server
+## Features + Screenshots
+### Landing: Grid view of photos
+![Landing](https://github.com/amandadr/photolabs/blob/main/docs/landing.gif?raw=true)
 
-```sh
-cd frontend
-npm start
-```
+### Topics: View by topic, or by all
+![Topics](https://github.com/amandadr/photolabs/blob/main/docs/topics.gif?raw=true)
 
-## [Backend] Running Backend Servier
+### Photo-View: View a photo in full, and photos similar to it
+![View-Photo](https://github.com/amandadr/photolabs/blob/main/docs/view-photo.gif?raw=true)
 
-Read `backend/readme` for further setup details.
+### I love it! Favourite a photo anywhere to toggle an indicator in the header
+![Favourite-Photo](https://github.com/amandadr/photolabs/blob/main/docs/favourite-photo.gif?raw=true)
 
-```sh
-cd backend
-npm start
-```
+
+## Dependencies
+- axios
+- body-parser
+- CORS
+- Dotenv
+- Express
+- Helmet
+- postgres
+- React
+- Socket.IO
+- web-vitals
+- ws
