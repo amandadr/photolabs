@@ -21,7 +21,7 @@ VALUES
 
 INSERT INTO PHOTO (ID, FULL_URL, REGULAR_URL, CITY, COUNTRY, USER_ID, TOPIC_ID)
 VALUES 
-  (1, 'Image-1-Full.jpeg', 'Image-1-Regular.jpeg', 'Montreal', 'Canada', 1, 1),
+  (10, 'Image-1-Full.jpeg', 'Image-1-Regular.jpeg', 'Montreal', 'Canada', 1, 1),
   (11, 'people-1-full.jpg', 'people-1-regular.jpg', 'Toronto', 'Canada', 1, 1),
   (12, 'people-2-full.jpg', 'people-2-regular.jpg', 'Vancouver', 'Canada', 2, 1),
   (13, 'people-3-full.jpg', 'people-3-regular.jpg', 'Calgary', 'Canada', 3, 1),
