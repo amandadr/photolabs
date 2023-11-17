@@ -13,7 +13,6 @@ const PhotoList = (props) => {
       key={photo.id}
       photoList={photos}
       photo={photo}
-      {...photo}
       favList={favList}
       favPhotoAdd={favPhotoAdd} 
       favPhotoDelete={favPhotoDelete}
