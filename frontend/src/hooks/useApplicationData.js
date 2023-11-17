@@ -14,14 +14,12 @@ const reducer = (state, action) => {
       const oldFavList = JSON.parse(localStorage.getItem('favList'));
       const addFavList = [...oldFavList, action.photoId];
       localStorage.setItem("favList", JSON.stringify(addFavList));
-      console.log(addFavList);
       return { ...state, favList: addFavList };
       
     case FAV_PHOTO_REMOVED:
       const currentFavList = JSON.parse(localStorage.getItem('favList'));
       const removeFavList = currentFavList.filter((photo) => photo !== action.photoId);
       localStorage.setItem("favList", JSON.stringify(removeFavList));
-      console.log(removeFavList);
       return { ...state, favList: removeFavList };
 
     case SELECT_PHOTO:
