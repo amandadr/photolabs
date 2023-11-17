@@ -4,9 +4,10 @@ import FavIcon from './FavIcon';
 import '../styles/FavBadge.scss';
 
 const FavBadge = ({ favOnPage }) => {
+  console.log(favOnPage())
   return (
     <div className='fav-badge'>
-      <FavIcon displayAlert={!!favOnPage()} selected={true}/>
+      <FavIcon displayAlert={favOnPage()} selected={true}/>
     </div>
   ) 
 };
