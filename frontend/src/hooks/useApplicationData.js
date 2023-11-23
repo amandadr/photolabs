@@ -12,7 +12,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case FAV_PHOTO_ADDED:
       const oldFavList = JSON.parse(localStorage.getItem('favList'));
-      const addFavList = [...oldFavList, action.photoId];
+      const addFavList = oldFavList === null ? [action.photoId] : [...oldFavList, action.photoId];
       localStorage.setItem("favList", JSON.stringify(addFavList));
       return { ...state, favList: addFavList };
       
@@ -45,7 +45,7 @@ const useApplicationData = () => {
 
   const [ state, dispatch ] = useReducer(reducer, initialState);
 
-  state.favList = localStorage.getItem('favList');
+  state.favList = localStorage.getItem('favList') || [];
 
   const favPhotoAdd = (photoId) => {
     dispatch({type: FAV_PHOTO_ADDED, photoId: photoId});
