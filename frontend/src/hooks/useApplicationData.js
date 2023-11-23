@@ -12,7 +12,17 @@ const reducer = (state, action) => {
   switch (action.type) {
     case FAV_PHOTO_ADDED:
       const oldFavList = JSON.parse(localStorage.getItem('favList'));
-      const addFavList = oldFavList === null ? [action.photoId] : [...oldFavList, action.photoId];
+      // const addFavList = oldFavList === null ? [action.photoId] : [...oldFavList, action.photoId];
+      let addFavList;
+      if (oldFavList === null) {
+        addFavList = [action.photoId];
+      } else {
+        if (!oldFavList.includes(action.photoId)) {
+          addFavList = [...oldFavList, action.photoId];
+        } else {
+          addFavList = [...oldFavList];
+        }
+      }
       localStorage.setItem("favList", JSON.stringify(addFavList));
       return { ...state, favList: addFavList };
       
