@@ -4,9 +4,14 @@ import '../styles/TopNavigationBar.scss'
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 import { fetchPhotos } from 'helpers/photoHelpers';
+import useApplicationData from 'hooks/useApplicationData';
 
 const TopNavigation = (props) => {
-  const { topics, setPhotoList, favList } = props;
+  const { topics, setPhotoList } = props;
+
+  const { state } = useApplicationData();
+
+  const { favList } = state;
 
   const favOnPage = () => {
     if (favList.length > 2) {

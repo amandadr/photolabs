@@ -1,18 +1,16 @@
-import { useReducer } from 'react';
+import { useReducer } from "react";
 
-export const FAV_PHOTO_ADDED = 'favPhotoAdd';
-export const FAV_PHOTO_REMOVED = 'favPhotoDelete';
-export const SET_PHOTO_DATA = 'setPhotos';
-export const SET_TOPIC_DATA = 'setTopics';
-export const SELECT_PHOTO = 'selectPhoto';
-export const DISPLAY_PHOTO_DETAILS = 'displayPhoto';
+export const FAV_PHOTO_ADDED = "favPhotoAdd";
+export const FAV_PHOTO_REMOVED = "favPhotoDelete";
+export const SET_PHOTO_DATA = "setPhotos";
+export const SET_TOPIC_DATA = "setTopics";
+export const SELECT_PHOTO = "selectPhoto";
+export const DISPLAY_PHOTO_DETAILS = "displayPhoto";
 
 const reducer = (state, action) => {
-
   switch (action.type) {
     case FAV_PHOTO_ADDED:
-      const oldFavList = JSON.parse(localStorage.getItem('favList'));
-      // const addFavList = oldFavList === null ? [action.photoId] : [...oldFavList, action.photoId];
+      const oldFavList = JSON.parse(localStorage.getItem("favList"));
       let addFavList;
       if (oldFavList === null) {
         addFavList = [action.photoId];
@@ -25,10 +23,12 @@ const reducer = (state, action) => {
       }
       localStorage.setItem("favList", JSON.stringify(addFavList));
       return { ...state, favList: addFavList };
-      
+
     case FAV_PHOTO_REMOVED:
-      const currentFavList = JSON.parse(localStorage.getItem('favList'));
-      const removeFavList = currentFavList.filter((photo) => photo !== action.photoId);
+      const currentFavList = JSON.parse(localStorage.getItem("favList"));
+      const removeFavList = currentFavList.filter(
+        (photo) => photo !== action.photoId
+      );
       localStorage.setItem("favList", JSON.stringify(removeFavList));
       return { ...state, favList: removeFavList };
 
@@ -43,34 +43,35 @@ const reducer = (state, action) => {
         `Tried to reduce with unsupported action type: ${action.type}`
       );
   }
-}
+};
 
 const initialState = {
   favList: [],
-  photo: {id: 0, user: 0, urls: 0, location: 0},
+  photo: { id: 0, user: 0, urls: 0, location: 0 },
   show: false,
-}
+};
 
 const useApplicationData = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const [ state, dispatch ] = useReducer(reducer, initialState);
-
-  state.favList = localStorage.getItem('favList') || [];
+  state.favList = localStorage.getItem("favList") || [];
 
   const favPhotoAdd = (photoId) => {
-    dispatch({type: FAV_PHOTO_ADDED, photoId: photoId});
+    dispatch({ type: FAV_PHOTO_ADDED, photoId: photoId });
   };
 
   const favPhotoDelete = (photoId) => {
-    dispatch({type: FAV_PHOTO_REMOVED, photoId: photoId})
+    dispatch({ type: FAV_PHOTO_REMOVED, photoId: photoId });
   };
 
   const selectPhoto = (photo) => {
-    dispatch({type: SELECT_PHOTO, photo: photo});
+    dispatch({ type: SELECT_PHOTO, photo: photo });
   };
 
   const displayPhoto = (show) => {
-    setTimeout(() => {dispatch({type: DISPLAY_PHOTO_DETAILS, show: show})}, 300)
+    setTimeout(() => {
+      dispatch({ type: DISPLAY_PHOTO_DETAILS, show: show });
+    }, 200);
   };
 
   return {
@@ -78,8 +79,8 @@ const useApplicationData = () => {
     favPhotoAdd,
     favPhotoDelete,
     selectPhoto,
-    displayPhoto
+    displayPhoto,
   };
-}
+};
 
 export default useApplicationData;
