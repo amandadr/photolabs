@@ -4,6 +4,7 @@ import "../styles/PhotoDetailsModal.scss";
 import PhotoList from "components/PhotoList";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoFavButton from "components/PhotoFavButton";
+import useApplicationData from "hooks/useApplicationData";
 
 const PhotoDetailsModal = () => {
   const { state, displayPhoto } =

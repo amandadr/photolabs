@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 import { findPhoto } from "helpers/photoHelpers";
+import useApplicationData from "hooks/useApplicationData";
 
 function PhotoFavButton(props) {
   const { photoId } = props;
