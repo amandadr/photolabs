@@ -4,7 +4,7 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
-  const { photo } = props;
+  const { photo, change, setChange } = props;
 
   const { id, location, urls, user } = photo;
 
@@ -19,7 +19,7 @@ const PhotoListItem = (props) => {
 
   return (
     <li key={id} className="photo-list__item">
-      <PhotoFavButton photoId={id} />
+      <PhotoFavButton photoId={id} change={change} setChange={setChange} />
       <section
         className="photo-list__click-container"
         onClick={() => {

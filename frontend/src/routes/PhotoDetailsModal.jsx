@@ -17,7 +17,7 @@ const PhotoDetailsModal = () => {
       <div className="photo-details-modal">
         <button
           onClick={() => {
-            displayPhoto(false);
+            // displayPhoto(false);
           }}
           className="photo-details-modal__close-button"
         >

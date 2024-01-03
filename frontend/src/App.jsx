@@ -13,6 +13,8 @@ const App = () => {
   const [thisPhotoList, setPhotoList] = useState([]);
   const [thisTopicList, setTopicList] = useState([]);
 
+  const [change, setChange] = useState(false);
+
   useEffect(() => {
     const photoPromise = axios.get("http://localhost:8001/api/photos");
     const topicPromise = axios.get("http://localhost:8001/api/topics");
@@ -35,6 +37,8 @@ const App = () => {
         photos={thisPhotoList}
         topics={thisTopicList}
         setPhotoList={setPhotoList}
+        change={change}
+        setChange={setChange}
       />
 
       <PhotoDetailsModal />

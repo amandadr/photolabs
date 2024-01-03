@@ -6,11 +6,17 @@ import { findPhoto } from "helpers/photoHelpers";
 import useApplicationData from "hooks/useApplicationData";
 
 function PhotoFavButton(props) {
-  const { photoId } = props;
+  const { photoId, change, setChange } = props;
 
-  const { state, favPhotoAdd, favPhotoDelete } = useApplicationData();
+  const { state, favPhotoAdd, favPhotoDelete } =
+    useApplicationData();
 
   const { favList } = state;
+
+  const listUpdate = () => {
+    console.log("setChange", change);
+    setChange(!change);
+  };
 
   // Manage favList state using FavIcon button
   const [liked, setLike] = useState(false);
@@ -18,15 +24,19 @@ function PhotoFavButton(props) {
     setLike(liked === false ? true : false);
     if (liked === true) {
       favPhotoDelete(photoId);
+      listUpdate();
     } else if (liked === false) {
       favPhotoAdd(photoId);
+      listUpdate();
     }
   };
 
   return (
     <div onClick={switchLike} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-        <FavIcon className={"true"} selected={findPhoto(favList, photoId)} />
+        {favList && (
+          <FavIcon className={"true"} selected={findPhoto(favList, photoId)} />
+        )}
       </div>
     </div>
   );
