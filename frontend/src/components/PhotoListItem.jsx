@@ -4,7 +4,8 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
-  const { photo } = props;
+
+  const { photo, isShowing, toggleModal } = props;
 
   const { id, location, urls, user } = photo;
 
@@ -14,8 +15,10 @@ const PhotoListItem = (props) => {
     selectPhoto(photo);
     // REFACTOR!!!!!
     // Change selectPhoto so that instead of setting the state with the photo object given (photo = photo.id, photo.location, etc) it searches the api to match the photo id to the photo object and then sets the state with that object. :) Probably create a helper function to do this - but maybe just edit selectPhoto in useApplicationData.js
-    displayPhoto(true);
+    // displayPhoto(true);
+    toggleModal();
   };
+
 
   return (
     <li key={id} className="photo-list__item">

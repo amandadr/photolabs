@@ -5,12 +5,16 @@ import TopNavigation from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 
 const HomeRoute = (props) => {
-  const { photos, topics, setPhotoList } = props;
+  const { photos, topics, setPhotoList, isShowing, toggleModal } = props;
 
   return (
     <div className="home-route">
       <TopNavigation topics={topics} setPhotoList={setPhotoList} />
-      <PhotoList photos={photos} />
+      <PhotoList
+        photos={photos}
+        isShowing={isShowing}
+        toggleModal={toggleModal}
+      />
     </div>
   );
 };

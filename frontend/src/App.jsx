@@ -4,9 +4,11 @@ import axios from "axios";
 import "./App.scss";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
+import useModal from "helpers/useModal";
 import useApplicationData from "hooks/useApplicationData";
 
 const App = () => {
+  const { isShowing, toggleModal } = useModal();
 
   // REFACTOR!!!!!!!!!!!!!
   // definitely rename the photolist to something more identifiable and put that state in the reducer so it can be accessed by all components!
@@ -35,9 +37,11 @@ const App = () => {
         photos={thisPhotoList}
         topics={thisTopicList}
         setPhotoList={setPhotoList}
+        isShowing={isShowing}
+        toggleModal={toggleModal}
       />
 
-      <PhotoDetailsModal />
+      <PhotoDetailsModal isShowing={isShowing} hide={toggleModal} />
     </div>
   );
 };

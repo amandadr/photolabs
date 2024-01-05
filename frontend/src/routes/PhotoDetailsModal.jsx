@@ -6,19 +6,17 @@ import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoFavButton from "components/PhotoFavButton";
 import useApplicationData from "hooks/useApplicationData";
 
-const PhotoDetailsModal = () => {
+const PhotoDetailsModal = ({ isShowing, hide }) => {
   const { state, displayPhoto } =
     useApplicationData();
 
   const { photo, show } = state;
 
   return (
-    show && (
+    isShowing && (
       <div className="photo-details-modal">
         <button
-          onClick={() => {
-            displayPhoto(false);
-          }}
+          onClick={hide}
           className="photo-details-modal__close-button"
         >
           <img src={closeSymbol} alt="close symbol" />
