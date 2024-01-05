@@ -1,14 +1,14 @@
 import { useReducer } from "react";
 
+export const SET_FAV_LIST = "setFavList";
 export const FAV_PHOTO_ADDED = "favPhotoAdd";
 export const FAV_PHOTO_REMOVED = "favPhotoDelete";
-export const SET_PHOTO_DATA = "setPhotos";
-export const SET_TOPIC_DATA = "setTopics";
-export const SELECT_PHOTO = "selectPhoto";
-export const DISPLAY_PHOTO_DETAILS = "displayPhoto";
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case SET_FAV_LIST:
+      return [...action.favList];
+  
     case FAV_PHOTO_ADDED:
       const oldFavList = JSON.parse(localStorage.getItem("favList"));
       let addFavList;
@@ -22,7 +22,7 @@ const reducer = (state, action) => {
         }
       }
       localStorage.setItem("favList", JSON.stringify(addFavList));
-      return { ...state, favList: addFavList };
+      return [...addFavList];
 
     case FAV_PHOTO_REMOVED:
       const currentFavList = JSON.parse(localStorage.getItem("favList"));
@@ -30,13 +30,7 @@ const reducer = (state, action) => {
         (photo) => photo !== action.photoId
       );
       localStorage.setItem("favList", JSON.stringify(removeFavList));
-      return { ...state, favList: removeFavList };
-
-    case SELECT_PHOTO:
-      return { ...state, photo: action.photo };
-
-    case DISPLAY_PHOTO_DETAILS:
-      return { ...state, show: action.show };
+      return [...removeFavList];
 
     default:
       throw new Error(
@@ -45,16 +39,15 @@ const reducer = (state, action) => {
   }
 };
 
-const initialState = {
-  favList: [],
-  photo: { id: 0, user: 0, urls: 0, location: 0 },
-  show: false,
-};
 
-const useApplicationData = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+const useFavList = () => {
+  const [favList, dispatch] = useReducer(reducer, []);
 
-  state.favList = localStorage.getItem("favList") || [];
+  // favList = localStorage.getItem("favList") || [];
+
+  const setFavList = (favList) => {
+    dispatch({ type: SET_FAV_LIST, favList: favList });
+  };
 
   const favPhotoAdd = (photoId) => {
     dispatch({ type: FAV_PHOTO_ADDED, photoId: photoId });
@@ -64,23 +57,12 @@ const useApplicationData = () => {
     dispatch({ type: FAV_PHOTO_REMOVED, photoId: photoId });
   };
 
-  const selectPhoto = (photo) => {
-    dispatch({ type: SELECT_PHOTO, photo: photo });
-  };
-
-  const displayPhoto = (show) => {
-    setTimeout(() => {
-      dispatch({ type: DISPLAY_PHOTO_DETAILS, show: show });
-    }, 200);
-  };
-
   return {
-    state,
+    favList,
     favPhotoAdd,
     favPhotoDelete,
-    selectPhoto,
-    displayPhoto,
+    setFavList,
   };
 };
 
-export default useApplicationData;
+export default useFavList;

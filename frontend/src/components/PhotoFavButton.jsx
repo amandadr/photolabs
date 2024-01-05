@@ -3,14 +3,12 @@ import React, { useState } from "react";
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 import { findPhoto } from "helpers/photoHelpers";
-import useApplicationData from "hooks/useApplicationData";
+import useFavList from "hooks/useFavList";
 
 function PhotoFavButton(props) {
   const { photoId } = props;
 
-  const { state, favPhotoAdd, favPhotoDelete } = useApplicationData();
-
-  const { favList } = state;
+  const { favList, favPhotoAdd, favPhotoDelete } = useFavList();
 
   // Manage favList state using FavIcon button
   const [liked, setLike] = useState(false);

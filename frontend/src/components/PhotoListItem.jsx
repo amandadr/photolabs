@@ -1,24 +1,23 @@
-import React from "react";
-import useApplicationData from "../hooks/useApplicationData";
+import React, { useEffect } from "react";
 import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
 
-  const { photo, isShowing, toggleModal } = props;
+  const { photo, toggleModal, setStatePhoto } = props;
 
   const { id, location, urls, user } = photo;
 
-  const { selectPhoto, displayPhoto } = useApplicationData();
-
   const handleDisplay = () => {
-    selectPhoto(photo);
+    // selectPhoto(photo);
+    setStatePhoto(photo);
+    console.log("photo", photo);
     // REFACTOR!!!!!
     // Change selectPhoto so that instead of setting the state with the photo object given (photo = photo.id, photo.location, etc) it searches the api to match the photo id to the photo object and then sets the state with that object. :) Probably create a helper function to do this - but maybe just edit selectPhoto in useApplicationData.js
     // displayPhoto(true);
+    
     toggleModal();
   };
-
 
   return (
     <li key={id} className="photo-list__item">

@@ -4,17 +4,16 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
-  const { photos, isShowing, toggleModal } = props;
+  const { photos, toggleModal, setStatePhoto } = props;
 
   const parsedPhotos =
     Array.isArray(photos) &&
     photos.map((photo) => (
       <PhotoListItem
         key={photo.id}
-        photoList={photos}
         photo={photo}
-        isShowing={isShowing}
         toggleModal={toggleModal}
+        setStatePhoto={setStatePhoto}
       />
     ));
 

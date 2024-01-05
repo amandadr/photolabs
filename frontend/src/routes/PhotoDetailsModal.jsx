@@ -4,21 +4,19 @@ import "../styles/PhotoDetailsModal.scss";
 import PhotoList from "components/PhotoList";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoFavButton from "components/PhotoFavButton";
-import useApplicationData from "hooks/useApplicationData";
 
-const PhotoDetailsModal = ({ isShowing, hide }) => {
-  const { state, displayPhoto } =
-    useApplicationData();
+const PhotoDetailsModal = (props) => {
+  const { isShowing, hide, setStatePhoto, statePhoto } = props;
 
-  const { photo, show } = state;
+  const photo = statePhoto;
 
   return (
-    isShowing && (
+    isShowing &&
+    photo &&
+    (console.log("Modal photo", photo),
+    (
       <div className="photo-details-modal">
-        <button
-          onClick={hide}
-          className="photo-details-modal__close-button"
-        >
+        <button onClick={hide} className="photo-details-modal__close-button">
           <img src={closeSymbol} alt="close symbol" />
         </button>
 
@@ -50,10 +48,14 @@ const PhotoDetailsModal = ({ isShowing, hide }) => {
           <div className="photo-details-modal__similar-photos">
             Similar Photos
           </div>
-          <PhotoList className="photo-list" photos={photo.similar_photos} />
+          <PhotoList
+            className="photo-list"
+            photos={photo.similar_photos}
+            setStatePhoto={setStatePhoto}
+          />
         </section>
       </div>
-    )
+    ))
   );
 };
 

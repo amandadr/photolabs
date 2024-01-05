@@ -4,11 +4,23 @@ import axios from "axios";
 import "./App.scss";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
-import useModal from "helpers/useModal";
-import useApplicationData from "hooks/useApplicationData";
+import useModal from "hooks/useModal";
+import usePhoto from "hooks/usePhoto";
+import useFavList from "hooks/useFavList";
 
 const App = () => {
   const { isShowing, toggleModal } = useModal();
+
+  const { statePhoto, setStatePhoto } = usePhoto();
+
+  const { favList, setFavList } = useFavList();
+
+  // setFavList(JSON.parse(localStorage.getItem("favList")));
+
+  useEffect(() => {
+    setFavList(JSON.parse(localStorage.getItem("favList")));
+  }
+  , []);
 
   // REFACTOR!!!!!!!!!!!!!
   // definitely rename the photolist to something more identifiable and put that state in the reducer so it can be accessed by all components!
@@ -37,11 +49,16 @@ const App = () => {
         photos={thisPhotoList}
         topics={thisTopicList}
         setPhotoList={setPhotoList}
-        isShowing={isShowing}
         toggleModal={toggleModal}
+        setStatePhoto={setStatePhoto}
       />
 
-      <PhotoDetailsModal isShowing={isShowing} hide={toggleModal} />
+      <PhotoDetailsModal
+        isShowing={isShowing}
+        hide={toggleModal}
+        setStatePhoto={setStatePhoto}
+        statePhoto={statePhoto}
+      />
     </div>
   );
 };
