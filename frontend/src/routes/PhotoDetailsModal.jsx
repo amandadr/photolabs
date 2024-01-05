@@ -9,12 +9,13 @@ const PhotoDetailsModal = (props) => {
   const { isShowing, hide, setStatePhoto, statePhoto } = props;
 
   const photo = statePhoto;
+  const toggleModal = () => {
+    return null;
+  }
 
   return (
     isShowing &&
-    photo &&
-    (console.log("Modal photo", photo),
-    (
+    photo && (
       <div className="photo-details-modal">
         <button onClick={hide} className="photo-details-modal__close-button">
           <img src={closeSymbol} alt="close symbol" />
@@ -51,11 +52,12 @@ const PhotoDetailsModal = (props) => {
           <PhotoList
             className="photo-list"
             photos={photo.similar_photos}
+            toggleModal={toggleModal}
             setStatePhoto={setStatePhoto}
           />
         </section>
       </div>
-    ))
+    )
   );
 };
 

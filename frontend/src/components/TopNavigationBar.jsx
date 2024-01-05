@@ -3,7 +3,7 @@ import React, { useCallback } from "react";
 import "../styles/TopNavigationBar.scss";
 import TopicList from "./TopicList";
 import FavBadge from "./FavBadge";
-import { fetchPhotos } from "helpers/photoHelpers";
+import { fetchPhotos } from "helpers/helpers";
 import useFavList from "hooks/useFavList";
 
 const TopNavigation = (props) => {
@@ -19,13 +19,14 @@ const TopNavigation = (props) => {
     }
   };
 
-  const url = "http://localhost:8001/api/photos";
   return (
     <div className="top-nav-bar">
       <span
         className="top-nav-bar__logo"
         onClick={useCallback(() => {
-          fetchPhotos(url, setPhotoList);
+          fetchPhotos().then((photos) => {
+            setPhotoList(photos);
+          });
         }, [])}
       >
         PhotoLabs

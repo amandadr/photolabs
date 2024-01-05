@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 
 import "../styles/TopicListItem.scss";
-import { fetchPhotos } from "helpers/photoHelpers";
+import { setTopic } from "helpers/helpers";
 
 const TopicListItem = (props) => {
   const { topicId, title, setPhotoList } = props;
@@ -12,7 +12,7 @@ const TopicListItem = (props) => {
     <div
       className="topic-list__item"
       onClick={useCallback(() => {
-        fetchPhotos(url, setPhotoList);
+        setTopic(url, setPhotoList);
       }, [])}
     >
       {title}

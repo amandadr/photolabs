@@ -4,10 +4,9 @@ const useModal = () => {
   const [isShowing, setIsShowing] = useState(false);
 
   function toggleModal() {
-    // setIsShowing(!isShowing);
-    setTimeout(() => {
-      setIsShowing(!isShowing);
-    }, 100);
+      setTimeout(() => {
+        setIsShowing(!isShowing);
+      }, 100);
   }
 
   return {

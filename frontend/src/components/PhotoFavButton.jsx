@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
-import { findPhoto } from "helpers/photoHelpers";
+import { findPhoto } from "helpers/helpers";
 import useFavList from "hooks/useFavList";
 
 function PhotoFavButton(props) {
-  const { photoId } = props;
+  const { photo } = props;
 
   const { favList, favPhotoAdd, favPhotoDelete } = useFavList();
 
@@ -15,16 +15,16 @@ function PhotoFavButton(props) {
   const switchLike = () => {
     setLike(liked === false ? true : false);
     if (liked === true) {
-      favPhotoDelete(photoId);
+      favPhotoDelete(photo.id);
     } else if (liked === false) {
-      favPhotoAdd(photoId);
+      favPhotoAdd(photo.id);
     }
   };
 
   return (
     <div onClick={switchLike} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-        <FavIcon className={"true"} selected={findPhoto(favList, photoId)} />
+        <FavIcon className={"true"} selected={liked} />
       </div>
     </div>
   );
