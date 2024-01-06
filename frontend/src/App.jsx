@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo, createContext } from "react";
 
 import "./App.scss";
 import HomeRoute from "routes/HomeRoute";
@@ -9,24 +9,25 @@ import usePhoto from "hooks/usePhoto";
 import useFavList from "hooks/useFavList";
 import { fetchPhotos, fetchTopics } from "helpers/helpers";
 
+export const favContext = createContext([]);
+
 const App = () => {
   const { isShowing, toggleModal } = useModal();
 
   const { statePhoto, setStatePhoto } = usePhoto();
 
-  const { favList, setFavList } = useFavList();
+  const { favList, setFavList, favPhotoAdd, favPhotoDelete } = useFavList();
 
   const { photoList, setPhotoList } = usePhotoList();
-
-  // setFavList(JSON.parse(localStorage.getItem("favList")));
-
-  useEffect(() => {
-    setFavList(JSON.parse(localStorage.getItem("favList")));
+  
+  const [topicList, setTopicList] = useState([]);
+  
+  useMemo(() => {
+    const storageList = JSON.parse(localStorage.getItem("favList"));
+    storageList && setFavList(storageList);
   }, []);
 
-  const [topicList, setTopicList] = useState([]);
-
-  useEffect(() => {
+  useMemo(() => {
     fetchPhotos().then((photos) => {
       setPhotoList(photos);
     });
@@ -38,20 +39,22 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute
-        photos={photoList}
-        topics={topicList}
-        setPhotoList={setPhotoList}
-        toggleModal={toggleModal}
-        setStatePhoto={setStatePhoto}
-      />
+      <favContext.Provider value={{ favList, favPhotoAdd, favPhotoDelete }}>
+        <HomeRoute
+          photos={photoList}
+          topics={topicList}
+          setPhotoList={setPhotoList}
+          toggleModal={toggleModal}
+          setStatePhoto={setStatePhoto}
+        />
 
-      <PhotoDetailsModal
-        isShowing={isShowing}
-        hide={toggleModal}
-        setStatePhoto={setStatePhoto}
-        statePhoto={statePhoto}
-      />
+        <PhotoDetailsModal
+          isShowing={isShowing}
+          hide={toggleModal}
+          setStatePhoto={setStatePhoto}
+          statePhoto={statePhoto}
+        />
+      </favContext.Provider>
     </div>
   );
 };

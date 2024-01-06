@@ -1,24 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
-import { findPhoto } from "helpers/helpers";
-import useFavList from "hooks/useFavList";
+import { searchFavList } from "helpers/helpers";
+import { favContext } from "App";
 
 function PhotoFavButton(props) {
   const { photo } = props;
 
-  const { favList, favPhotoAdd, favPhotoDelete } = useFavList();
+  const { favList, favPhotoAdd, favPhotoDelete } = useContext(favContext);
 
-  // Manage favList state using FavIcon button
+  // Manage favList state using FavIcon button and liked state
   const [liked, setLike] = useState(false);
+
+
+  useEffect(() => {
+    searchFavList(favList, photo.id) ? setLike(true) : setLike(false);
+  }
+  , [favList]);
+
   const switchLike = () => {
-    setLike(liked === false ? true : false);
-    if (liked === true) {
-      favPhotoDelete(photo.id);
-    } else if (liked === false) {
-      favPhotoAdd(photo.id);
-    }
+    setLike(!liked);
+    liked ? favPhotoDelete(photo.id) : favPhotoAdd(photo.id);
   };
 
   return (

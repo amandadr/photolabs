@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
 export const SET_FAV_LIST = "setFavList";
 export const FAV_PHOTO_ADDED = "favPhotoAdd";
@@ -10,9 +10,9 @@ const reducer = (state, action) => {
       return [...action.favList];
   
     case FAV_PHOTO_ADDED:
-      const oldFavList = JSON.parse(localStorage.getItem("favList"));
+      const oldFavList = JSON.parse(localStorage.getItem("favList")) || [];
       let addFavList;
-      if (oldFavList === null) {
+      if (oldFavList === null || oldFavList.length === 0) {
         addFavList = [action.photoId];
       } else {
         if (!oldFavList.includes(action.photoId)) {
@@ -25,7 +25,7 @@ const reducer = (state, action) => {
       return [...addFavList];
 
     case FAV_PHOTO_REMOVED:
-      const currentFavList = JSON.parse(localStorage.getItem("favList"));
+      const currentFavList = JSON.parse(localStorage.getItem("favList")) || [];
       const removeFavList = currentFavList.filter(
         (photo) => photo !== action.photoId
       );
@@ -42,8 +42,6 @@ const reducer = (state, action) => {
 
 const useFavList = () => {
   const [favList, dispatch] = useReducer(reducer, []);
-
-  // favList = localStorage.getItem("favList") || [];
 
   const setFavList = (favList) => {
     dispatch({ type: SET_FAV_LIST, favList: favList });

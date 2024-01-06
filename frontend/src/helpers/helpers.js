@@ -8,6 +8,14 @@ export const findPhoto = (photos, photoId) => {
   }
 };
 
+export const searchFavList = (favList, photoId) => {
+  if (favList !== undefined && favList.includes(photoId)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 export const setTopic = (endpoint, setList) => {
   axios.get(endpoint).then((res) => {
     setList(res.data);

@@ -9,14 +9,13 @@ const PhotoListItem = (props) => {
   const { id, location, urls, user } = photo;
 
   const handleDisplay = () => {
-    console.log("handleDisplay", photo)
     setStatePhoto(photo);
     toggleModal();
   };
 
   return (
     <li key={id} className="photo-list__item">
-      <PhotoFavButton photo={photo} />
+      <PhotoFavButton photo={photo}/>
       <section
         className="photo-list__click-container"
         onClick={() => {

@@ -9,6 +9,7 @@ const PhotoDetailsModal = (props) => {
   const { isShowing, hide, setStatePhoto, statePhoto } = props;
 
   const photo = statePhoto;
+
   const toggleModal = () => {
     return null;
   }
@@ -23,7 +24,7 @@ const PhotoDetailsModal = (props) => {
 
         <section className="photo-details-modal__header">
           <section className="photo-details-modal__image-container">
-            <PhotoFavButton photoId={photo.id} />
+            <PhotoFavButton photo={photo} />
             <img
               src={photo.urls.full}
               alt="imagination"
